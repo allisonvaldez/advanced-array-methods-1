@@ -1,3 +1,10 @@
+/**
+Questions:
+
+*/
+
+
+
 /*
 Write a function called doubleValues which accepts an array and returns a new array with all the values in the array passed to the function doubled
 
@@ -6,9 +13,14 @@ Examples:
     doubleValues([5,1,2,3,10]) // [10,2,4,6,20]
 
 */
-function doubleValues(arr){
-    
+function doubleValues(arr) {
+    let newArr = [];
+    arr.forEach(val => {
+        newArr.push(val * 2);
+    });
+    return newArr;
 }
+
 
 /*
 Write a function called onlyEvenValues which accepts an array and returns a new array with only the even values in the array passed to the function
@@ -18,9 +30,27 @@ Examples:
     onlyEvenValues([5,1,2,3,10]) // [2,10]
 
 */
-function onlyEvenValues(arr){
+// function onlyEvenValues(arr) {
+//     let evenArray = [];
+
+//     arr.forEach(i => {
+//         evenArray.push(i % 2 === 0);
+//     });
+//     return evenArray;
     
+// }
+
+function onlyEvenValues(arr) {
+    let newArr = [];
+    arr.forEach(i => {
+        if (i % 2 === 0) {
+            newArr.push(i);
+        }
+    });
+    return newArr; 
 }
+
+
 
 /*
 Write a function called showFirstAndLast which accepts an array of strings and returns a new array with only the first and last character of each string.
@@ -30,8 +60,12 @@ Examples:
     showFirstAndLast(['hi', 'goodbye', 'smile']) // ['hi', 'ge', 'se']
 
 */
-function showFirstAndLast(arr){
-    
+function showFirstAndLast(arr) {
+    let newArr = [];
+    arr.forEach(val => {
+        newArr.push(val[0] + val[val.length - 1]);
+    });
+    return newArr;
 }
 
 /*
@@ -43,8 +77,11 @@ Examples:
     // [{name: 'Elie', title:'instructor'}, {name: 'Tim', title:'instructor'}, {name: 'Matt', title:'instructor'}, {name: 'Colt', title:'instructor'}]
 
 */
-function addKeyAndValue(arr,key,value){
-    
+function addKeyAndValue(arr, key, value) {
+    arr.forEach(val => {
+        val[key] = value;
+    });
+    return arr;
 }
 
 /*
@@ -57,9 +94,26 @@ Examples:
     vowelCount('hmmm') // {};
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
-function vowelCount(str){
-   
+function vowelCount(str) {
+    let obj = {};
+    let vowels = "aeiou";
+    let strSplit = str.split("");
+    
+    strSplit.forEach(letter => {
+        let makeLower = letter.toLowerCase();
+        if (vowels.indexOf(makeLower) !== -1) {
+            if (obj[makeLower]) {
+                obj[makeLower]++;
+            } else {
+                obj[makeLower] = 1;
+            }
+        }
+    });
+    return obj;
 }
+
+
+// MAPS
 
 /*
 Write a function called doubleValuesWithMap which accepts an array and returns a new array with all the values in the array passed to the function doubled
@@ -69,7 +123,11 @@ Examples:
     doubleValuesWithMap([1,-2,-3]) // [2,-4,-6]
 */
 
-function doubleValuesWithMap(arr) {}
+function doubleValuesWithMap(arr) {
+    return arr.map(val => {
+        return val * 2;
+    });
+}
 
 /*
 Write a function called valTimesIndex which accepts an array and returns a new array with each value multiplied by the index it is currently at in the array.
@@ -79,8 +137,10 @@ Examples:
     valTimesIndex([1,-2,-3]) // [0,-2,-6]
 */
 
-function valTimesIndex(arr){
-    
+function valTimesIndex(arr) {
+    return arr.map((element, index) =>
+        element * index
+    );
 }
 
 /*
@@ -104,6 +164,8 @@ Examples:
 function extractFullName(arr){
     
 }
+
+// FILTER
 
 /*
 Write a function called filterByValue which accepts an array of objects and a key and returns a new array with all the objects that contain that key.
